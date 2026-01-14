@@ -1,7 +1,7 @@
 # Desenvolvendo o Dio Bank
 Desenvolvido por [Giulliano Guimarães](https://github.com/giullianoth)
 
-Este é o primeiro desafio da Formação TypeScript Fullstack Developer da DIO, ministrada por [Nathally Souza](https://github.com/nathsouzadev)
+Este é o segundo desafio da Formação TypeScript Fullstack Developer da DIO, ministrada por [Nathally Souza](https://github.com/nathsouzadev)
 
 #### Projeto desenvolvido com conceitos básicos de typescript
 
