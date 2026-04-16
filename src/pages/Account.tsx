@@ -34,7 +34,7 @@ const Account = () => {
     return (
         <Center>
             {userData
-                ? <SimpleGrid marginTop="2em" columns={2} gap={8}>
+                ? <SimpleGrid marginTop="2em" columns={1} gap={8} md={{ gridTemplateColumns: "1fr 1fr" }}>
                     <CardInfo
                         heading={`Bem-vindo, ${userData.name}!`}
                         content={`${currentDate.toLocaleDateString()} ${currentDate.getHours()}:${currentDate.getMinutes()}`} />
