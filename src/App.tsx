@@ -1,19 +1,30 @@
-import { Box, ChakraProvider, defaultSystem } from '@chakra-ui/react'
+/// <reference path="react-app-env.d.ts" />
+import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
 import './App.css'
 import Layout from './components/Layout'
-import FormCard from './components/FormCard'
+import { BrowserRouter } from 'react-router-dom'
+import { AppContextProvider } from './context/AppContext'
+import MainRoutes from 'routes'
+import { createLocalStorage, getAllLocalStorage } from 'services/storage'
+import { useEffect } from 'react'
 
 const App = () => {
+  useEffect(() => {
+    if (!getAllLocalStorage()) {
+      createLocalStorage()
+    }
+  }, [])
+
   return (
-    <ChakraProvider value={defaultSystem}>
-      <Layout>
-        <Box
-          height="100%"
-          position="relative">
-          <FormCard />
-        </Box>
-      </Layout>
-    </ChakraProvider>
+    <BrowserRouter>
+      <AppContextProvider>
+        <ChakraProvider value={defaultSystem}>
+          <Layout>
+            <MainRoutes />
+          </Layout>
+        </ChakraProvider>
+      </AppContextProvider>
+    </BrowserRouter>
   )
 }
 

@@ -1,7 +1,8 @@
 import { Button as ChakraButton } from "@chakra-ui/react"
+import React from "react"
 
 type Props = {
-    onClick: () => void
+    onClick: React.MouseEventHandler
 }
 
 const Button = ({ onClick }: Props) => {
