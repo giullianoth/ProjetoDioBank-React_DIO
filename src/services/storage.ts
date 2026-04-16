@@ -1,7 +1,8 @@
 import { DioBank } from "types/dio-bank"
 
-const dioBank = {
-    login: false
+const dioBank: DioBank = {
+    login: false,
+    user: null
 }
 
 export const getAllLocalStorage = (): string | null => {

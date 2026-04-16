@@ -2,10 +2,11 @@ import { Center, SimpleGrid, Spinner } from "@chakra-ui/react"
 import CardInfo from "../components/CardInfo"
 import { useContext, useEffect, useState } from "react"
 import { UserData } from "../types/user"
-import { api } from "../api"
 import { useNavigate, useParams } from "react-router-dom"
 import { AppContext } from "../context/AppContext"
 import { IAppContext } from "../types/context"
+import { getAllLocalStorage } from "services/storage"
+import { DioBank } from "types/dio-bank"
 
 const Account = () => {
     const [userData, setUserData] = useState<UserData | null>(null)
@@ -14,12 +15,12 @@ const Account = () => {
     const { isLoggedIn } = useContext(AppContext) as IAppContext
 
     useEffect(() => {
-        const getData = async () => {
-            const data = await api
-            setUserData(data)
-        }
+        const storage = getAllLocalStorage()
 
-        getData()
+        if (storage) {
+            const { user } = JSON.parse(storage) as DioBank
+            setUserData(user)
+        }
     }, [])
 
     useEffect(() => {

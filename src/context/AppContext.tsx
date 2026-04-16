@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react"
 import { IAppContext } from "../types/context"
 import { getAllLocalStorage } from "services/storage"
 import { DioBank } from "types/dio-bank"
+import { login } from "../services/login"
 
 type Props = {
     children: ReactNode
@@ -22,7 +23,7 @@ export const AppContextProvider = ({ children }: Props) => {
     }, [storage])
 
     return (
-        <AppContext.Provider value={{ user, isLoggedIn, setIsLoggedIn }}>
+        <AppContext.Provider value={{ user, isLoggedIn, setIsLoggedIn, login }}>
             {children}
         </AppContext.Provider>
     )

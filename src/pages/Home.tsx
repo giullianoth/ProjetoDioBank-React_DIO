@@ -1,18 +1,30 @@
 import { AbsoluteCenter, Box, Field, Heading, Input, Stack } from "@chakra-ui/react"
 import Card from "../components/Card"
-import { useContext, useState } from "react"
-import { login } from "../services/login"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../context/AppContext"
 import { IAppContext } from "types/context"
 import Button from "../components/Button"
-import { changeLocalStorage } from "services/storage"
+import { getAllLocalStorage } from "services/storage"
+import { DioBank } from "types/dio-bank"
 
 const Home = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const navigate = useNavigate()
-    const { setIsLoggedIn } = useContext(AppContext) as IAppContext
+    const { isLoggedIn, setIsLoggedIn, login } = useContext(AppContext) as IAppContext
+
+    useEffect(() => {
+        const storage = getAllLocalStorage()
+
+        if (storage) {
+            const { login, user } = JSON.parse(storage) as DioBank
+
+            if (isLoggedIn && login && user) {
+                navigate(`/conta/${user.id}`)
+            }
+        }
+    }, [navigate, isLoggedIn])
 
     const handleValidateUser = async (email: string, password: string) => {
         const loggedIn = await login(email, password)
@@ -23,7 +35,6 @@ const Home = () => {
         }
 
         setIsLoggedIn(true)
-        changeLocalStorage({ login: true })
         navigate(`/conta/1`)
     }
 

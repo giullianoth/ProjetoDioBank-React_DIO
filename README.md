@@ -38,7 +38,7 @@ Este é o segundo desafio da Formação TypeScript Fullstack Developer da DIO, m
   - Para logar, além do email faça a validação com a senha informada pelo usuário.
   - Durante a implementação, aplique o TDD e escreva os testes unitários para a nova validação
 
-- [] Implemente um sistema de login com a Context API
+- [x] Implemente um sistema de login com a Context API
   - Seguindo os exemplos demonstrados ao longo do curso, crie um estado global para realizar o login
   - Utilize o localStorage para armazenar os dados do usuário ao logar
   - Caso os dados do usuário existam no localStorage, a tela de login não deve ser exibida
