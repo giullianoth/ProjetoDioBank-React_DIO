@@ -14,11 +14,11 @@ const Home = () => {
     const navigate = useNavigate()
     const { setIsLoggedIn } = useContext(AppContext) as IAppContext
 
-    const handleValidateUser = async (email: string) => {
-        const loggedIn = await login(email)
+    const handleValidateUser = async (email: string, password: string) => {
+        const loggedIn = await login(email, password)
 
         if (!loggedIn) {
-            alert("E-mail inválido")
+            alert("E-mail ou senha inválido")
             return
         }
 
@@ -64,7 +64,7 @@ const Home = () => {
                                 onChange={event => setPassword(event.target.value)} />
                         </Field.Root>
 
-                        <Button onClick={() => handleValidateUser(email)} />
+                        <Button onClick={() => handleValidateUser(email, password)} />
                     </Stack>
                 </Card>
             </AbsoluteCenter>
