@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import Account from "./pages/Account"
-import AccountInfo from "./pages/AccountInfo"
+import UserInfo from "./pages/UserInfo"
 import Home from "./pages/Home"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { AppContext } from "context/AppContext"
@@ -13,7 +13,7 @@ const MainRoutes = () => {
         <Routes>
             <Route path="/" element={isLoggedIn ? <Navigate to="/conta/1" /> : <Home />} />
             <Route path="/conta/:id" element={isLoggedIn ? <Account /> : <Navigate to="/" />} />
-            <Route path="/informacoes-da-conta" element={<AccountInfo />} />
+            <Route path="/usuario/:id" element={<UserInfo />} />
         </Routes>
     )
 }
