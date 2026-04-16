@@ -1,6 +1,6 @@
 import { AbsoluteCenter, Box, Field, Heading, Input, Stack } from "@chakra-ui/react"
 import Card from "../components/Card"
-import { useContext, useEffect, useState } from "react"
+import { FormEvent, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../context/AppContext"
 import { IAppContext } from "types/context"
@@ -38,6 +38,11 @@ const Home = () => {
         navigate(`/conta/1`)
     }
 
+    const handleSubmit = (event: FormEvent) => {
+        event.preventDefault()
+        handleValidateUser(email, password)
+    }
+
     return (
         <Box
             height="100%"
@@ -54,29 +59,31 @@ const Home = () => {
                         Faça o Login
                     </Heading>
 
-                    <Stack gap="4" w="full">
-                        <Field.Root>
-                            <Input
-                                type="email"
-                                placeholder="E-mail"
-                                border="1px solid #CCC"
-                                padding="10px"
-                                value={email}
-                                onChange={event => setEmail(event.target.value)} />
-                        </Field.Root>
+                    <form onSubmit={handleSubmit}>
+                        <Stack gap="4" w="full">
+                            <Field.Root>
+                                <Input
+                                    type="email"
+                                    placeholder="E-mail"
+                                    border="1px solid #CCC"
+                                    padding="10px"
+                                    value={email}
+                                    onChange={event => setEmail(event.target.value)} />
+                            </Field.Root>
 
-                        <Field.Root>
-                            <Input
-                                type="password"
-                                placeholder="Senha"
-                                border="1px solid #CCC"
-                                padding="10px"
-                                value={password}
-                                onChange={event => setPassword(event.target.value)} />
-                        </Field.Root>
+                            <Field.Root>
+                                <Input
+                                    type="password"
+                                    placeholder="Senha"
+                                    border="1px solid #CCC"
+                                    padding="10px"
+                                    value={password}
+                                    onChange={event => setPassword(event.target.value)} />
+                            </Field.Root>
 
-                        <Button onClick={() => handleValidateUser(email, password)} />
-                    </Stack>
+                            <Button />
+                        </Stack>
+                    </form>
                 </Card>
             </AbsoluteCenter>
 

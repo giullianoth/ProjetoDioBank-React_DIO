@@ -1,14 +1,10 @@
 import { Button as ChakraButton } from "@chakra-ui/react"
 import React from "react"
 
-type Props = {
-    onClick: React.MouseEventHandler
-}
-
-const Button = ({ onClick }: Props) => {
+const Button = () => {
     return (
         <ChakraButton
-            onClick={onClick}
+        type="submit"
             backgroundColor="#17a2b8"
             flexGrow={1}>
             Entrar
