@@ -13,7 +13,7 @@ const MainRoutes = () => {
         <Routes>
             <Route path="/" element={isLoggedIn ? <Navigate to="/conta/1" /> : <Home />} />
             <Route path="/conta/:id" element={isLoggedIn ? <Account /> : <Navigate to="/" />} />
-            <Route path="/usuario/:id" element={<UserInfo />} />
+            <Route path="/usuario/:id" element={isLoggedIn ? <UserInfo /> : <Navigate to="/" />} />
         </Routes>
     )
 }

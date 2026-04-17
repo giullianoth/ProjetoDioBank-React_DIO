@@ -44,7 +44,7 @@ const Account = () => {
                     </SimpleGrid>
 
                     <Link to={`/usuario/${userData.id}`}>
-                        <Text color="white" fontWeight="bold">Detalhes do Perfil</Text>
+                        <Text color="white" fontWeight="bold" textDecoration="underline">Detalhes do Perfil</Text>
                     </Link>
                 </>
 

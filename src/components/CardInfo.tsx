@@ -15,7 +15,7 @@ const CardInfo = ({ heading, content }: Props) => {
             width="100%"
             maxWidth="480px">
             <Text fontSize="xl" fontWeight="bold">{heading}</Text>
-            <Text>{content}</Text>
+            <Text marginTop={3}>{content}</Text>
         </Box>
     )
 }
